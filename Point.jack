@@ -1,0 +1,14 @@
+class Point {
+    field int x, y, max_val;
+
+    constructor Point new(int a, int b, int max) {
+        let x = a;
+        let y = b;
+        let max_val = max;
+        return this;
+    }
+
+    method void moveRight() {
+        
+    }
+}
