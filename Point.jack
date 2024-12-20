@@ -1,11 +1,15 @@
 class Point {
-    field int x, y, max_val;
+    field int x, y;
 
-    constructor Point new(int a, int b, int max) {
+    constructor Point new(int a, int b) {
         let x = a;
         let y = b;
-        let max_val = max;
         return this;
+    }
+
+    method void dispose() {
+      do Memory.deAlloc(this);
+      return;
     }
 
     method int getX(){
@@ -18,33 +22,21 @@ class Point {
 
     method void moveLeft() {
         let x = x-1;
-        if (x < 0) {
-            let x = x + max_val;
-        }
         return;
     }
 
     method void moveRight() {
         let x = x+1;
-        if (x > max_val - 1) {
-            let x = x - max_val;
-        }
         return;
     }
 
     method void moveUp() {
         let y = y-1;
-        if (y < 0) {
-            let y = y + max_val;
-        }
         return;
     }
 
     method void moveDown() {
         let y = y+1;
-        if (y > max_val - 1) {
-            let y = y - max_val;
-        }
         return;
     }
 
@@ -57,8 +49,8 @@ class Point {
     method Point minus(Point other) {
         var int x_delta, y_delta;
         var Point translation;
-        let x_temp = other.getX() - x;
-        let y_temp = other.getY() - y;
+        let x_delta = other.getX() - x;
+        let y_delta = other.getY() - y;
         let translation = Point.new(x_delta, y_delta);
         return translation;
     }

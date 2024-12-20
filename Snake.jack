@@ -2,21 +2,20 @@ class Snake {
   field Point pose;
   field Snake behind;
   field boolean movingPositive, movingVertical;
+  field int boardSize;
 
-  constructor Snake new(Point start) {
+  constructor Snake new(Point start, int board, Snake previous) {
     let pose = start;
-    let behind = null;
+    let behind = previous;
+    let boardSize = board;
     let movingPositive = false;
     let movingVertical = false;
     return this;
   }
 
-  constructor Snake new(Point start, Snake previous) {
-    let pose = start;
-    let behind = previous;
-    let movingPositive = false;
-    let movingVertical = false;
-    return this;
+  method void dispose() {
+      do Memory.deAlloc(this);
+      return;
   }
 
   method Point getPose() {
@@ -24,24 +23,54 @@ class Snake {
   }
 
   method void moveLeft() {
-    
+    do pose.moveLeft();
+    if (~(behind = null)) { do behind.moveTo(pose); }
+    do updateDirection();
+    return;
   }
 
   method void moveRight() {
-
+    do pose.moveRight();
+    if (~(behind = null)) { do behind.moveTo(pose); }
+    do updateDirection();
+    return;
   }
 
   method void moveDown() {
-    
+    do pose.moveDown();
+    if (~(behind = null)) { do behind.moveTo(pose); }
+    do updateDirection();
+    return;
   }
 
   method void moveUp() {
-    
+    do pose.moveUp();
+    if (~(behind = null)) { do behind.moveTo(pose); }
+    do updateDirection();
+    return;
+  }
+
+  method void moveTo(Point other) {
+    do pose.moveTo(other);
+    return;
   }
 
   method void updateDirection() {
-    if (behind = null) {
-      return;
+    if (~(behind = null)) {
+      var Point diff;
+      let diff = pose.minus(behind.getPose());
+      if (diff.getX() > 0 | diff.getY() > 0) {
+        let movingPositive = true;
+      } else {
+        let movingPositive = false;
+      }
+
+      if (~(diff.getY() = 0)) {
+        let movingVertical = true;
+      } else {
+        let movingVertical = false;
+      }
     }
+    return;
   }
 }
