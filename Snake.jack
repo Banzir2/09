@@ -1,6 +1,47 @@
 class Snake {
-  
-  constructor Snake new() {
+  field Point pose;
+  field Snake behind;
+  field boolean movingPositive, movingVertical;
+
+  constructor Snake new(Point start) {
+    let pose = start;
+    let behind = null;
+    let movingPositive = false;
+    let movingVertical = false;
     return this;
+  }
+
+  constructor Snake new(Point start, Snake previous) {
+    let pose = start;
+    let behind = previous;
+    let movingPositive = false;
+    let movingVertical = false;
+    return this;
+  }
+
+  method Point getPose() {
+    return pose;
+  }
+
+  method void moveLeft() {
+    
+  }
+
+  method void moveRight() {
+
+  }
+
+  method void moveDown() {
+    
+  }
+
+  method void moveUp() {
+    
+  }
+
+  method void updateDirection() {
+    if (behind = null) {
+      return;
+    }
   }
 }

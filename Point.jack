@@ -8,6 +8,14 @@ class Point {
         return this;
     }
 
+    method int getX(){
+        return x;    
+    }
+
+    method int getY() {
+        return y;
+    }
+
     method void moveLeft() {
         let x = x-1;
         if (x < 0) {
@@ -38,5 +46,20 @@ class Point {
             let y = y - max_val;
         }
         return;
+    }
+
+    method void moveTo(Point other) {
+        let x = other.getX();
+        let y = other.getY();
+        return;
+    }
+
+    method Point minus(Point other) {
+        var int x_delta, y_delta;
+        var Point translation;
+        let x_temp = other.getX() - x;
+        let y_temp = other.getY() - y;
+        let translation = Point.new(x_delta, y_delta);
+        return translation;
     }
 }
