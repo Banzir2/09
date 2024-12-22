@@ -56,8 +56,8 @@ class Snake {
   }
 
   method void updateDirection() {
+    var Point diff;
     if (~(behind = null)) {
-      var Point diff;
       let diff = pose.minus(behind.getPose());
       if (diff.getX() > 0 | diff.getY() > 0) {
         let movingPositive = true;
