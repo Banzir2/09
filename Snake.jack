@@ -94,6 +94,7 @@ class Snake {
         do moveDown();
       }
     }
+    return;
   }
 
   method boolean isAlive() {
