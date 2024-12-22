@@ -23,35 +23,37 @@ class Snake {
   }
 
   method void moveLeft() {
-    do pose.moveLeft();
     if (~(behind = null)) { do behind.moveTo(pose); }
+    do pose.moveLeft();
     do updateDirection();
     return;
   }
 
   method void moveRight() {
-    do pose.moveRight();
     if (~(behind = null)) { do behind.moveTo(pose); }
+    do pose.moveRight();
     do updateDirection();
     return;
   }
 
   method void moveDown() {
-    do pose.moveDown();
     if (~(behind = null)) { do behind.moveTo(pose); }
+    do pose.moveDown();
     do updateDirection();
     return;
   }
 
   method void moveUp() {
-    do pose.moveUp();
     if (~(behind = null)) { do behind.moveTo(pose); }
+    do pose.moveUp();
     do updateDirection();
     return;
   }
 
   method void moveTo(Point other) {
+  if (~(behind = null)) { do behind.moveTo(pose); }
     do pose.moveTo(other);
+    do updateDirection();
     return;
   }
 
