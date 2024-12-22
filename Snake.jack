@@ -14,8 +14,11 @@ class Snake {
   }
 
   method void dispose() {
-      do Memory.deAlloc(this);
-      return;
+    if (~(behind = null)) {
+      do behind.dispose();
+    }
+    do Memory.deAlloc(this);
+    return;
   }
 
   method Snake getPrevious() {
