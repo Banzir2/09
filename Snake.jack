@@ -62,27 +62,25 @@ class Snake {
   }
 
   method boolean isAlive() {
+    var Snake snake;
+    var boolean isLiving;
+    let snake = getPrevious();
+
     // Check that the head isn't in the walls
-    if (pose.getX() < 0 | 
-        pose.getX() >= boardSize | 
-        pose.getY() < 0 | 
-        pose.getY() >= boardSize) {
+    if (pose.getX() < 0 | pose.getX() > boardSize-1 | pose.getY() < 0 | pose.getY() > boardSize-1) {
       return false;
     }
 
     // Check that the snake isn't in itself
-    var Snake snake;
-    let snake = this.getPrevious();
-    var boolean isAlive;
-    let isAlive = true;
+    let isLiving = true;
     while(~(snake = null)) {
       if (pose.isEqual(snake.getPose())) {
         return false;
       }
-      snake = snake.getPrevious();
-      let isAlive = snake.isAlive();
+      let snake = snake.getPrevious();
+      let isLiving = snake.isAlive();
     }
-    return isAlive;
+    return isLiving;
   }
 
   method void updateDirection() {
