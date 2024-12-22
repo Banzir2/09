@@ -46,6 +46,11 @@ class Point {
         return;
     }
 
+
+    method boolean isEqual(Point other) {
+        return other.getX() = x & other.getY() = y;
+    }
+
     method Point minus(Point other) {
         var int x_delta, y_delta;
         var Point translation;

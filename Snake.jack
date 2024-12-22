@@ -18,6 +18,10 @@ class Snake {
       return;
   }
 
+  method Snake getPrevious() {
+    return behind;
+  }
+
   method Point getPose() {
     return pose;
   }
@@ -55,6 +59,30 @@ class Snake {
     do pose.moveTo(other);
     do updateDirection();
     return;
+  }
+
+  method boolean isAlive() {
+    // Check that the head isn't in the walls
+    if (pose.getX() < 0 | 
+        pose.getX() >= boardSize | 
+        pose.getY() < 0 | 
+        pose.getY() >= boardSize) {
+      return false;
+    }
+
+    // Check that the snake isn't in itself
+    var Snake snake;
+    let snake = this.getPrevious();
+    var boolean isAlive;
+    let isAlive = true;
+    while(~(snake = null)) {
+      if (pose.isEqual(snake.getPose())) {
+        return false;
+      }
+      snake = snake.getPrevious();
+      let isAlive = snake.isAlive();
+    }
+    return isAlive;
   }
 
   method void updateDirection() {
