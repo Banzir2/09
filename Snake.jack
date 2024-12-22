@@ -30,11 +30,11 @@ class Snake {
     return;
   }
 
-  method Snake getBack() {
-    if (behind = null) {
-      return this;
+  method int getLength() {
+    if (~(behind = null)) {
+      return 1;
     }
-    return behind.getBack();
+    return 1 + behind.getLength();
   }
 
   method Snake getPrevious() {
@@ -108,15 +108,17 @@ class Snake {
     }
 
     // Check that the snake isn't in itself
+    if (behind = null)  {
+      return true;
+    }
     let isLiving = true;
     while(~(snake = null)) {
       if (pose.isEqual(snake.getPose())) {
         return false;
       }
       let snake = snake.getPrevious();
-      let isLiving = snake.isAlive();
     }
-    return isLiving;
+    return behind.isAlive();
   }
 
   method void updateDirection() {

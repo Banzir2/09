@@ -14,8 +14,8 @@ class Game {
         return;
     }
 
-    method boolean advance(int keyPressed) {
-        if (keyPressed = -1) {
+    method void advance(int keyPressed) {
+        if (keyPressed = 0) {
             do snake.moveInDirection();
         }
 
@@ -32,7 +32,10 @@ class Game {
         if (keyPressed = 130) { // Left arrow
             do snake.moveLeft();
         }
+        return;
+    }
 
-        return snake.isAlive();
+    method boolean continueGame() {
+        return snake.isAlive() & snake.getLength < boardSize * boardSize;
     }
 }

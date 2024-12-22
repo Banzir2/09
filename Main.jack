@@ -12,6 +12,13 @@
 class Main {
   function void main() {
     // Your code goes here!
+    var Game game;
+    let game = Game.new();
+    var int keyPressed;
+    while (game.continueGame()) {
+      let keyPressed = Keyboard.keyPressed();
+      game.advance(keyPressed);
+    }
     return;
   }
 
