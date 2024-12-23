@@ -5,17 +5,7 @@ class GameBoard {
     constructor GameBoard new(int board_size) {
         let boardSize = board_size;
         let board = Array.new(boardSize);
-        var int i, j;
-        let i = 0;
-        while (i < board_size) {
-            let board[i] = Array.new(board_size);
-            let j = 0;
-            while (j < board_size) {
-                let board[i][j] = 0;
-                let j = j + 1;
-            }
-            let i = i + 1;
-        }
+        do zeroBoard();
         return this;
     }
 
@@ -25,6 +15,23 @@ class GameBoard {
             let boardSize = boardSize - 1;
         }
         do Memory.deAlloc(board);
+        return;
+    }
+
+    method void zeroBoard() {
+        var int i, j;
+        var int pointer;
+        let i = 0;
+        while (i < boardSize) {
+            let board[i] = Array.new(boardSize);
+            let j = 0;
+            while (j < boardSize) {
+                let pointer = board[i];
+                let pointer[j] = 0;
+                let j = j + 1;
+            }
+            let i = i + 1;
+        }
         return;
     }
 }
