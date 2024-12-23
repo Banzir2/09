@@ -118,7 +118,7 @@ class Snake {
       }
       let snake = snake.getPrevious();
     }
-    return behind.isAlive();
+    return true;
   }
 
   method void updateDirection() {
