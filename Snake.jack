@@ -111,7 +111,6 @@ class Snake {
     if (behind = null)  {
       return true;
     }
-    let isLiving = true;
     while(~(snake = null)) {
       if (pose.isEqual(snake.getPose())) {
         return false;
