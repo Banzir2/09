@@ -34,4 +34,15 @@ class GameBoard {
         }
         return;
     }
+
+    method void updateSnake(Point newHead, Point lastBack, boolean isGrowing) {
+        var int pointer;
+        let pointer = board[newHead.getY()];
+        let pointer[newHead.getX()] = 1;
+        if (~(isGrowing)) {
+            let pointer = board[lastBack.getY()];
+            let pointer[lastBack.getX()] = 0;
+        }
+        return;
+    }
 }
