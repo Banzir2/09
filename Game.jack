@@ -36,6 +36,12 @@ class Game {
     }
 
     method boolean continueGame() {
-        return snake.isAlive() & snake.getLength < boardSize * boardSize;
+        if (~(snake.getLength() < (boardSize * boardSize))) {
+            return false;
+        }
+        if (~(snake.isAlive())) {
+            return false;
+        }
+        return true;
     }
 }

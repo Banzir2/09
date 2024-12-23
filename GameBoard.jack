@@ -1,0 +1,30 @@
+class GameBoard {
+    field int boardSize;
+    field Array board;
+
+    constructor GameBoard new(int board_size) {
+        let boardSize = board_size;
+        let board = Array.new(boardSize);
+        var int i, j;
+        let i = 0;
+        while (i < board_size) {
+            let board[i] = Array.new(board_size);
+            let j = 0;
+            while (j < board_size) {
+                let board[i][j] = 0;
+                let j = j + 1;
+            }
+            let i = i + 1;
+        }
+        return this;
+    }
+
+    method void dispose() {
+        while (boardSize > 0) {
+            do Memory.deAlloc(board[boardSize - 1]);
+            let boardSize = boardSize - 1;
+        }
+        do Memory.deAlloc(board);
+        return;
+    }
+}
