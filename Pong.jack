@@ -8,8 +8,6 @@ class Pong {
    constructor Pong new() {
       let rocket1 = Square.new(1, 128, 4, 15);
       let rocket2 = Square.new(506, 128, 4, 15);
-      let direction1 = 0;
-      let direction2 = 0;
       let ball = Square.new(128, 250, 5, 5);
       let dx = -1; let dy = 1;
       return this;
@@ -33,19 +31,17 @@ class Pong {
    method void run() {
       var char key;  // the key currently pressed by the user
       var boolean exit;
+      var int direction1, direction2; // the direction of the rocket movements
       let exit = false;
 
       while (~exit) {
          // waits for a key to be pressed
-         while (key = 0) {
-            let key = Keyboard.keyPressed();
-            do moveBall();
-         }
-         if (key = 81)  { let exit = true; }     // q key
-         if (key = 131) { let direction = 1; }   // up arrow
-         if (key = 133) { let direction = 2; }   // down arrow
-         if (key = 130) { let direction = 3; }   // left arrow
-         if (key = 132) { let direction = 4; }   // right arrow
+         let key = Keyboard.keyPressed();
+         if (key = 80)  { let exit = true; }     // p key
+         if (key = 131) { let direction2 = -1; }   // up arrow
+         if (key = 133) { let direction2 = 1; }   // down arrow
+         if (key = 87) { let direction1 = 3; }   // w key
+         if (key = 83) { let direction = 4; }   // s key
 
          // waits for the key to be released
          while (~(key = 0)) {
