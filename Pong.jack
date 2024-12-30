@@ -8,10 +8,10 @@ class Pong {
 
    /** Constructs a new Pong Game. */
    constructor Pong new() {
-      let rocket1 = Square.new(128, 50, 30);
-      let rocket2 = Square.new(128, 450, 30);
+      let rocket1 = Square.new(1, 128, 30);
+      let rocket2 = Square.new(510, 128, 30);
       let direction1 = 1;
-      let direction2 = 2;
+      let direction2 = -1;
       let ball = Square.new(128, 250, 10);
       let dx = 1; let dy = 1;
       return this;
@@ -25,12 +25,13 @@ class Pong {
    }
 
    /** Moves the square in the current direction. */
-   method void moveSquare() {
-      if (direction = 1) { do square.moveUp(); }
-      if (direction = 2) { do square.moveDown(); }
-      if (direction = 3) { do square.moveLeft(); }
-      if (direction = 4) { do square.moveRight(); }
-      do Sys.wait(5);  // delays the next movement
+   method void moveRockets(boolean move1, boolean move2) {
+      if (move1) {
+        do rocket1.move(0, direction1);
+      }
+      if (move2) {
+        do rocket2.move(0, direction2);
+      }
       return;
    }
 
