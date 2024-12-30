@@ -38,6 +38,8 @@ class Pong {
       var int direction1, direction2; // the direction of the rocket movements
       let exit = false;
 
+      let direction1 = 0; let direction2 = 0;
+
       while (~exit) {
          // waits for a key to be pressed
          let key = Keyboard.keyPressed();
