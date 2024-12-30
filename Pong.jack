@@ -28,7 +28,26 @@ class Pong {
    }
 
    method boolean moveBall() {
-
+      if (ball.getX() < 55) {
+        return true;
+      }
+      if (ball.getX() > 455) {
+        return true;
+      }
+      if (ball.getY() = 0) {
+        let dy = -dy;
+      }
+      if (ball.getY() = 250) {
+        let dy = -dy;
+      }
+      if (ball.getX() = 55) {
+        if (ball.getY() < rocket1.getY() + rocket1.getSizeY() + 1) {
+          if (ball.getY() > rocket1.getY() - 6) {
+            let dx = -dx;
+          }
+        }
+      }
+      return false;
    }
 
    /** Runs the game: handles the user's inputs and moves the square accordingly */
