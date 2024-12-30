@@ -2,8 +2,6 @@ class Pong {
    field Square rocket1; // the first rocket of this game
    field Square rocket2; // the second rocket of this game
    field Square ball; // the ball of this game
-   field int direction1; // the first rocket's current direction
-   field int direction2; // the second rocket's current direction
    field int dx; field int dy; // the ball's current direction
 
    /** Constructs a new Pong Game. */
@@ -25,13 +23,9 @@ class Pong {
    }
 
    /** Moves the square in the current direction. */
-   method void moveRockets(boolean move1, boolean move2) {
-      if (move1) {
-        do rocket1.move(0, direction1);
-      }
-      if (move2) {
-        do rocket2.move(0, direction2);
-      }
+   method void moveRockets(int direction1, int direction2) {
+      do rocket1.move(0, direction1);
+      do rocket2.move(0, direction2);
       return;
    }
 
@@ -45,7 +39,7 @@ class Pong {
          // waits for a key to be pressed
          while (key = 0) {
             let key = Keyboard.keyPressed();
-            do moveSquare();
+            do moveBall();
          }
          if (key = 81)  { let exit = true; }     // q key
          if (key = 131) { let direction = 1; }   // up arrow
