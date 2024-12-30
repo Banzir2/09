@@ -7,13 +7,14 @@
 class Square {
 
    field int x, y; // screen location of the square's top-left corner
-   field int size; // length of this square, in pixels
+   field int sizex, sizey; // length of this square, in pixels
 
    /** Constructs a new square with a given location and size. */
-   constructor Square new(int Ax, int Ay, int Asize) {
+   constructor Square new(int Ax, int Ay, int Asizex, int Asizey) {
       let x = Ax;
       let y = Ay;
-      let size = Asize;
+      let sizex = Asizex;
+      let sizey = Asizey;
       do draw();
       return this;
    }
@@ -27,20 +28,19 @@ class Square {
    /** Draws the square on the screen. */
    method void draw() {
       do Screen.setColor(true);
-      do Screen.drawRectangle(x, y, x + size, y + size);
+      do Screen.drawRectangle(x, y, x + sizex, y + sizey);
       return;
    }
 
    /** Erases the square from the screen. */
    method void erase() {
       do Screen.setColor(false);
-      do Screen.drawRectangle(x, y, x + size, y + size);
+      do Screen.drawRectangle(x, y, x + sizex, y + sizey);
       return;
    }
 
    method void move(int dx, int dy) {
-      do Screen.setColor(false);
-      do Screen.drawRectangle(x, (y + size) - 1, x + size, y + size);
+      erase();
       let y = y + dy;
       let x = x + dx;
       if (x < 0) {
@@ -49,14 +49,13 @@ class Square {
       if (y < 0) {
          let y = 0;
       }
-      if (x > 512 - size) {
-         let x = 512 - size;
+      if (x > 512 - sizex) {
+         let x = 512 - sizex;
       }
-      if (y > 256 - size) {
-         let y = 256 - size;
+      if (y > 256 - sizey) {
+         let y = 256 - sizey;
       }
-      do Screen.setColor(true);
-      do Screen.drawRectangle(x, y, x + size, y + 1);
+      draw();
       return;
    }
 }
