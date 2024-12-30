@@ -8,12 +8,12 @@ class Pong {
 
    /** Constructs a new Pong Game. */
    constructor Pong new() {
-      let rocket1 = Square.new(1, 128, 30);
-      let rocket2 = Square.new(510, 128, 30);
-      let direction1 = 1;
-      let direction2 = -1;
-      let ball = Square.new(128, 250, 10);
-      let dx = 1; let dy = 1;
+      let rocket1 = Square.new(1, 128, 4, 15);
+      let rocket2 = Square.new(506, 128, 4, 15);
+      let direction1 = 0;
+      let direction2 = 0;
+      let ball = Square.new(128, 250, 5, 5);
+      let dx = -1; let dy = 1;
       return this;
    }
 
