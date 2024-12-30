@@ -19,6 +19,16 @@ class Square {
       return this;
    }
 
+   /** Get the x coordinate of the square. */
+    method int getX() {
+        return x;
+    }
+
+    /** Get the y coordinate of the square. */
+    method int getY() {
+        return y;
+    }
+
    /** Disposes this square. */
    method void dispose() {
       do Memory.deAlloc(this);
