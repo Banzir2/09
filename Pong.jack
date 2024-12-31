@@ -30,7 +30,8 @@ class Pong {
    }
 
    method boolean moveBall() {
-      if (ball.getX() < 55) {
+      var int bbound, tbound;
+      if (ball.getX() < 51) {
         return true;
       }
       if (ball.getX() > 451) {
@@ -42,16 +43,20 @@ class Pong {
       if (ball.getY() = 250) {
         let dy = -dy;
       }
+      let bbound = rocket1.getY() + rocket1.getSizeY() + 1;
+      let tbound = rocket1.getY() - ball.getSizeY() - 1;
       if (ball.getX() = 51) {
-        if (ball.getY() < rocket1.getY() + rocket1.getSizeY() + 1) {
-          if (ball.getY() > rocket1.getY() - ball.getSizeY() - 1) {
+        if (ball.getY() < bbound) {
+          if (ball.getY() > tbound) {
             let dx = -dx;
           }
         }
       }
+      let bbound = rocket2.getY() + rocket1.getSizeY() + 1;
+      let tbound = rocket2.getY() - ball.getSizeY() - 1;
       if (ball.getX() = 451) {
-        if (ball.getY() < rocket2.getY() + rocket2.getSizeY() + 1) {
-          if (ball.getY() > rocket2.getY() - ball.getSizeY() - 1) {
+        if (ball.getY() > bbound) {
+          if (ball.getY() < tbound) {
             let dx = -dx;
           }
         }
@@ -96,7 +101,7 @@ class Pong {
          do moveRockets(direction1, direction2);
          let ballDead = moveBall();
          if (ballDead) { let exit = true; }
-         do Sys.wait(2000);
+         do Sys.wait(4);
        } // end of while loop
      return;
    }
