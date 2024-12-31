@@ -67,6 +67,15 @@ class Pong {
     return;
    }
 
+   methid void displayEnd() {
+    // print the game over message
+    do Screen.clearScreen();
+    do Screen.setColor(true);
+    do Screen.drawText(200, 100, "Game Over!");
+    do Sys.wait(3000);
+    return;
+   }
+
    /** Runs the game: handles the user's inputs and moves the square accordingly */
    method void run() {
       var char key;  // the key currently pressed by the user
@@ -88,7 +97,7 @@ class Pong {
          let ballDead = moveBall();
          if (ballDead) { let exit = true; }
          do Sys.wait(1000);
-       } // while
+       } // end of while loop
      return;
    }
 }
