@@ -12,6 +12,11 @@
 class Main {
   function void main() {
     // Your code goes here!
+    var Pong game;
+    let game = Pong.new();
+    do game.displayStart();
+    do game.run();
+    do game.dispose();
     return;
   }
 

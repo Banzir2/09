@@ -70,10 +70,10 @@ class Square {
          let y = 0;
       }
       if (x > 512 - sizex) {
-         let x = 512 - sizex;
+         let x = 512 - sizex - 1;
       }
       if (y > 256 - sizey) {
-         let y = 256 - sizey;
+         let y = 256 - sizey - 1;
       }
       do draw();
       return;

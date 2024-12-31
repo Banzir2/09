@@ -8,14 +8,16 @@ class Pong {
    constructor Pong new() {
       let rocket1 = Square.new(51, 128, 4, 15);
       let rocket2 = Square.new(456, 128, 4, 15);
-      let ball = Square.new(128, 250, 5, 5);
+      let ball = Square.new(250, 128, 5, 5);
       let dx = -1; let dy = 1;
       return this;
    }
 
    /** Disposes this game. */
    method void dispose() {
-      do square.dispose();
+      do rocket1.dispose();
+      do rocket2.dispose();
+      do ball.dispose();
       do Memory.deAlloc(this);
       return;
    }
@@ -57,6 +59,14 @@ class Pong {
       return false;
    }
 
+   method void displayStart() {
+    do rocket1.draw();
+    do rocket2.draw();
+    do ball.draw();
+    do Sys.wait(3000);
+    return;
+   }
+
    /** Runs the game: handles the user's inputs and moves the square accordingly */
    method void run() {
       var char key;  // the key currently pressed by the user
@@ -77,6 +87,7 @@ class Pong {
          do moveRockets(direction1, direction2);
          let ballDead = moveBall();
          if (ballDead) { let exit = true; }
+         do Sys.wait(1000);
        } // while
      return;
    }
