@@ -59,7 +59,18 @@ class Square {
       return;
    }
 
+   method void printPose() {      
+      do Output.printInt(x);
+      do Output.printChar(" ");
+      do Output.printInt(y);
+      do Output.printString("   ");
+      return;
+   }
+
    method void move(int dx, int dy) {
+      var int xbound, ybound;
+      let xbound = 512 - sizex;
+      let ybound = 256 - sizey;
       do erase();
       let y = y + dy;
       let x = x + dx;
@@ -69,10 +80,10 @@ class Square {
       if (y < 0) {
          let y = 0;
       }
-      if (x > 512 - sizex) {
+      if (x > xbound) {
          let x = 512 - sizex - 1;
       }
-      if (y > 256 - sizey) {
+      if (y > ybound) {
          let y = 256 - sizey - 1;
       }
       do draw();

@@ -96,7 +96,7 @@ class Pong {
          do moveRockets(direction1, direction2);
          let ballDead = moveBall();
          if (ballDead) { let exit = true; }
-         do Sys.wait(200);
+         do Sys.wait(2000);
        } // end of while loop
      return;
    }
