@@ -64,16 +64,15 @@ class Pong {
     do rocket1.draw();
     do rocket2.draw();
     do ball.draw();
-    do Sys.wait(3000);
+    do Sys.wait(1000);
     return;
    }
 
    method void displayEnd() {
     // print the game over message
     do Screen.clearScreen();
-    do Screen.setColor(true);
-    do Screen.drawText(200, 100, "Game Over!");
-    do Sys.wait(3000);
+    do Output.moveCursor(13, 26);
+    do Output.printString("Game Over!");
     return;
    }
 
@@ -97,7 +96,7 @@ class Pong {
          do moveRockets(direction1, direction2);
          let ballDead = moveBall();
          if (ballDead) { let exit = true; }
-         do Sys.wait(1000);
+         do Sys.wait(200);
        } // end of while loop
      return;
    }
