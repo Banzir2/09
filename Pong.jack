@@ -6,8 +6,8 @@ class Pong {
 
    /** Constructs a new Pong Game. */
    constructor Pong new() {
-      let rocket1 = Square.new(51, 128, 4, 15);
-      let rocket2 = Square.new(456, 128, 4, 15);
+      let rocket1 = Square.new(51, 128, 4, 25);
+      let rocket2 = Square.new(456, 128, 4, 25);
       let ball = Square.new(250, 128, 5, 5);
       let dx = -1; let dy = 1;
       return this;
@@ -34,7 +34,7 @@ class Pong {
       if (ball.getX() < 51) {
         return true;
       }
-      if (ball.getX() > 451) {
+      if (ball.getX() > 455) {
         return true;
       }
       if (ball.getY() = 0) {
@@ -45,18 +45,18 @@ class Pong {
       }
       let bbound = rocket1.getY() + rocket1.getSizeY() + 1;
       let tbound = rocket1.getY() - ball.getSizeY() - 1;
-      if (ball.getX() = 51) {
+      if (ball.getX() = 55) {
         if (ball.getY() < bbound) {
           if (ball.getY() > tbound) {
             let dx = -dx;
           }
         }
       }
-      let bbound = rocket2.getY() + rocket1.getSizeY() + 1;
+      let bbound = rocket2.getY() + rocket2.getSizeY() + 1;
       let tbound = rocket2.getY() - ball.getSizeY() - 1;
       if (ball.getX() = 451) {
-        if (ball.getY() > bbound) {
-          if (ball.getY() < tbound) {
+        if (ball.getY() < bbound) {
+          if (ball.getY() > tbound) {
             let dx = -dx;
           }
         }
@@ -101,7 +101,7 @@ class Pong {
          do moveRockets(direction1, direction2);
          let ballDead = moveBall();
          if (ballDead) { let exit = true; }
-         do Sys.wait(4);
+         do Sys.wait(10);
        } // end of while loop
      return;
    }
