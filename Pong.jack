@@ -42,7 +42,7 @@ class Pong {
       if (ball.getY() = 250) {
         let dy = -dy;
       }
-      if (ball.getX() = 55) {
+      if (ball.getX() = 51) {
         if (ball.getY() < rocket1.getY() + rocket1.getSizeY() + 1) {
           if (ball.getY() > rocket1.getY() - ball.getSizeY() - 1) {
             let dx = -dx;
@@ -50,8 +50,8 @@ class Pong {
         }
       }
       if (ball.getX() = 451) {
-        if (ball.getY() < rocket1.getY() + rocket1.getSizeY() + 1) {
-          if (ball.getY() > rocket1.getY() - ball.getSizeY() - 1) {
+        if (ball.getY() < rocket2.getY() + rocket2.getSizeY() + 1) {
+          if (ball.getY() > rocket2.getY() - ball.getSizeY() - 1) {
             let dx = -dx;
           }
         }
