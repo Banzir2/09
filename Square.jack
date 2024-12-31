@@ -29,6 +29,16 @@ class Square {
         return y;
     }
 
+    /** Get the x size of the square. */
+    method int getSizeX() {
+        return sizex;
+    }
+
+    /** Get the y size of the square. */
+    method int getSizeY() {
+        return sizey;
+    }
+
    /** Disposes this square. */
    method void dispose() {
       do Memory.deAlloc(this);
@@ -50,7 +60,7 @@ class Square {
    }
 
    method void move(int dx, int dy) {
-      erase();
+      do erase();
       let y = y + dy;
       let x = x + dx;
       if (x < 0) {
@@ -65,7 +75,7 @@ class Square {
       if (y > 256 - sizey) {
          let y = 256 - sizey;
       }
-      draw();
+      do draw();
       return;
    }
 }
