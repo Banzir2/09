@@ -27,10 +27,10 @@ class Main {
     do Output.printString("Player 1 (Left): W for up and S for down.");
     do Output.moveCursor(12, 4);
     do Output.printString("Player 2 (Right): uparrow for up and downarrow for down.");
-    do Output.moveCursor(15, 6);
+    do Output.moveCursor(15, 8);
     do Output.printString("The score is displayed at the top of the screen.");
 
-    do Output.moveCursor(18, 24);
+    do Output.moveCursor(18, 20);
     do Output.printString("Press any key to start");
 
     while (start = false) {
