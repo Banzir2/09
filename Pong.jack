@@ -68,6 +68,11 @@ class Pong {
       return false;
    }
 
+   method void resetBall() {
+    do ball.moveTo(250, 128);
+    return;
+   }
+
    method void displayStart() {
     do rocket1.draw();
     do rocket2.draw();

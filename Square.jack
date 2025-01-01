@@ -108,4 +108,12 @@ class Square {
       do draw();
       return;
    }
+
+   method void moveTo(int nx, int ny) {
+      do erase();
+      let x = nx;
+      let y = ny;
+      do draw();
+      return;
+   }
 }
