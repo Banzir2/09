@@ -6,7 +6,7 @@
 /** Implements a graphical square. */
 class Square {
 
-   field int x, y; // screen location of the square's top-left corner
+   field int x, y, dx, dy; // screen location of the square's top-left corner
    field int sizex, sizey; // length of this square, in pixels
 
    /** Constructs a new square with a given location and size. */
@@ -67,43 +67,26 @@ class Square {
       return;
    }
 
-   method void move(int dx, int dy) {
+   method void move(int ndx, int ndy) {
       var int xbound, ybound;
       var boolean dxzero, dyzero;
+      let dx = ndx; let dy = ndy;
       let xbound = 512 - sizex - 1;
       let ybound = 256 - sizey - 1;
       do erase();
-      let dxzero = (dx = 0);
-      let dyzero = (dy = 0);
-      while (~(dxzero & dyzero)) {
-         let y = y + dy;
-         let x = x + dx;
-         if (x < 0) {
-            let x = 0;
-         }
-         if (y < 0) {
-            let y = 0;
-         }
-         if (x > xbound) {
-            let x = 512 - sizex - 2;
-         }
-         if (y > ybound) {
-            let y = 256 - sizey - 2;
-         }
-         if (dx < 0) {
-            let dx = dx + 1;
-         }
-         if (dx > 0) {
-            let dx = dx - 1;
-         }
-         if (dy < 0) {
-            let dy = dy + 1;
-         }
-         if (dy > 0) {
-            let dy = dy - 1;
-         }
-         let dxzero = (dx = 0);
-         let dyzero = (dy = 0);
+      let y = y + dy;
+      let x = x + dx;
+      if (x < 0) {
+         let x = 0;
+      }
+      if (y < 0) {
+         let y = 0;
+      }
+      if (x > xbound) {
+         let x = 512 - sizex - 2;
+      }
+      if (y > ybound) {
+         let y = 256 - sizey - 2;
       }
       do draw();
       return;
