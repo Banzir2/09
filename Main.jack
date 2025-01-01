@@ -46,6 +46,7 @@ class Main {
       do game.displayScore();
       do game.displayStart();
       let exit = game.run();
+      do game.resetBall();
     }
     do game.displayEnd();
     do game.dispose();
