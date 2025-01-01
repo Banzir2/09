@@ -3,6 +3,7 @@ class Pong {
    field Square rocket2; // the second rocket of this game
    field Square ball; // the ball of this game
    field int dx; field int dy; // the ball's current direction
+   field int score1, score2; // the scores of the two players
 
    /** Constructs a new Pong Game. */
    constructor Pong new() {
@@ -32,12 +33,14 @@ class Pong {
    method boolean moveBall() {
       var int bbound, tbound;
       if (ball.getX() < 51) {
+        let score2 = score2 + 1;
         return true;
       }
       if (ball.getX() > 455) {
+        let score1 = score1 + 1;
         return true;
       }
-      if (ball.getY() = 0) {
+      if (ball.getY() = 15) {
         let dy = -dy;
       }
       if (ball.getY() = 250) {
@@ -81,19 +84,35 @@ class Pong {
     return;
    }
 
+   method void displayScore() {
+    // print the scores
+    do Screen.clearScreen();
+    do Output.moveCursor(0, 28);
+    do Output.printInt(score1);
+    do Output.printChar(32);
+    do Output.printChar(58);
+    do Output.printChar(32);
+    do Output.printInt(score2);
+    return;
+   }
+
    /** Runs the game: handles the user's inputs and moves the square accordingly */
-   method void run() {
+   method boolean run() {
       var char key;  // the key currently pressed by the user
-      var boolean exit, ballDead;
+      var boolean exit, ballDead, totalExit;
       var int direction1, direction2; // the direction of the rocket movements
       let exit = false;
+      let totalExit = false;
 
       let direction1 = 0; let direction2 = 0;
 
       while (~exit) {
          // waits for a key to be pressed
          let key = Keyboard.keyPressed();
-         if (key = 80)  { let exit = true; }     // p key
+         if (key = 80)  {
+            let exit = true;
+            let totalExit = true;
+         }     // p key
          if (key = 131) { let direction2 = -1; }   // up arrow
          if (key = 133) { let direction2 = 1; }   // down arrow
          if (key = 87) { let direction1 = -1; }   // w key
@@ -103,6 +122,6 @@ class Pong {
          if (ballDead) { let exit = true; }
          do Sys.wait(10);
        } // end of while loop
-     return;
+     return totalExit;
    }
 }

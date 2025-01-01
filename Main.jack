@@ -13,9 +13,14 @@ class Main {
   function void main() {
     // Your code goes here!
     var Pong game;
+    var bool exit;
     let game = Pong.new();
-    do game.displayStart();
-    do game.run();
+    let exit = false;
+    while (exit = false) {
+      do game.displayScore();
+      do game.displayStart();
+      let exit = game.run();
+    }
     do game.displayEnd();
     do game.dispose();
     return;
