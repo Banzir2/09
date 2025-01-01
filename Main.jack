@@ -11,9 +11,35 @@
   */
 class Main {
   function void main() {
-    // Your code goes here!
+    var bool start;
+    var char key;
     var Pong game;
     var bool exit;
+
+    let start = false;
+
+    do Screen.clearScreen();
+    do Output.moveCursor(6, 26);
+    do Output.printString("Pong Game");
+
+    // Print the instructions
+    do Output.moveCursor(10, 14);
+    do Output.printString("Player 1 (Left): W for up and S for down.");
+    do Output.moveCursor(12, 4);
+    do Output.printString("Player 2 (Right): uparrow for up and downarrow for down.");
+    do Output.moveCursor(15, 6);
+    do Output.printString("The score is displayed at the top of the screen.");
+
+    do Output.moveCursor(18, 24);
+    do Output.printString("Press any key to start");
+
+    while (start = false) {
+      let key = Keyboard.keyPressed();
+      if (~(key = 0)) {
+        let start = true;
+      }
+    }
+
     let game = Pong.new();
     let exit = false;
     while (exit = false) {
